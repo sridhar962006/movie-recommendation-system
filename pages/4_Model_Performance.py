@@ -27,7 +27,7 @@ m2.metric("Test ratings", f"{meta['n_test']:,}")
 m3.metric("Users evaluated for ranking", f"{setup['users_evaluated']:,}")
 m4.metric("K", setup["k"])
 
-PLOT = dict(template="plotly_dark", paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
+LAYOUT_THEME = dict(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)")
 
 # ---- rating prediction -----------------------------------------------------------------------
 section("Rating prediction: RMSE and MAE (lower is better)")
@@ -39,8 +39,8 @@ for col, row in zip(cards, rating.itertuples()):
 long = rating.melt(id_vars="algorithm", value_vars=["rmse", "mae"], var_name="metric", value_name="value")
 long["metric"] = long["metric"].str.upper()
 fig = px.bar(long, x="algorithm", y="value", color="metric", barmode="group", text_auto=".3f",
-             color_discrete_map={"RMSE": "#e50914", "MAE": "#8b5cf6"}, **PLOT)
-fig.update_layout(xaxis_title="", yaxis_title="Error (stars)")
+             color_discrete_map={"RMSE": "#e50914", "MAE": "#8b5cf6"}, template="plotly_dark")
+fig.update_layout(xaxis_title="", yaxis_title="Error (stars)", **LAYOUT_THEME)
 st.plotly_chart(fig)
 st.caption(f"Lowest RMSE in this run: **{best['algorithm']}** ({best['rmse']:.3f}). "
            "Differences between close results may not be meaningful with a single train/test split.")
@@ -62,8 +62,9 @@ st.dataframe(view.round(4), hide_index=True)
 long = ranking.melt(id_vars="algorithm", value_vars=["precision", "recall", "f1"], var_name="metric",
                     value_name="value")
 fig = px.bar(long, x="algorithm", y="value", color="metric", barmode="group", text_auto=".3f",
-             color_discrete_map={"precision": "#e50914", "recall": "#8b5cf6", "f1": "#fbbf24"}, **PLOT)
-fig.update_layout(xaxis_title="", yaxis_title="Score")
+             color_discrete_map={"precision": "#e50914", "recall": "#8b5cf6", "f1": "#fbbf24"},
+             template="plotly_dark")
+fig.update_layout(xaxis_title="", yaxis_title="Score", **LAYOUT_THEME)
 st.plotly_chart(fig)
 top = ranking.loc[ranking["f1"].idxmax()]
 st.caption(f"Highest F1@{setup['k']} in this run: **{top['algorithm']}** ({top['f1']:.3f}). "
@@ -89,6 +90,6 @@ st.markdown(f"SVD: {svd['n_factors']} latent factors, {svd['n_epochs']} epochs, 
 history = pd.DataFrame(metrics.get("svd_training_history", []))
 if not history.empty:
     fig = px.line(history, x="epoch", y="train_rmse", markers=True, title="SVD training error per epoch",
-                  color_discrete_sequence=["#e50914"], **PLOT)
-    fig.update_layout(yaxis_title="Training RMSE")
+                  color_discrete_sequence=["#e50914"], template="plotly_dark")
+    fig.update_layout(yaxis_title="Training RMSE", **LAYOUT_THEME)
     st.plotly_chart(fig)

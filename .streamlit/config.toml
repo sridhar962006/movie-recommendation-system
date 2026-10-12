@@ -9,7 +9,8 @@ font = "sans serif"
 [client]
 # Never show Python stack traces to end users (details go to the terminal log).
 showErrorDetails = "none"
-toolbarMode = "minimal"
+# toolbarMode: "developer" shows the Deploy button and developer menu, "minimal" hides them.
+toolbarMode = "developer"
 
 [server]
 headless = true
