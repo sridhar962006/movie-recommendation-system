@@ -50,11 +50,19 @@ def find_dataset_dir(data_dir: str | Path = DATA_DIR) -> Path:
     """Locate the folder that contains movies.csv and ratings.csv."""
     data_dir = Path(data_dir)
     if not data_dir.exists():
+        if data_dir == DATA_DIR and (data_dir.parent / "movies.csv").is_file() and (data_dir.parent / "ratings.csv").is_file():
+            return data_dir.parent
         raise DatasetError(f"Data folder '{data_dir}' does not exist. {DOWNLOAD_HINT}")
+
     candidates = [data_dir] + sorted(p for p in data_dir.iterdir() if p.is_dir())
     for candidate in candidates:
         if (candidate / "movies.csv").is_file() and (candidate / "ratings.csv").is_file():
             return candidate
+
+    # Fallback to project root if default DATA_DIR doesn't have the files but root does
+    if data_dir == DATA_DIR and (data_dir.parent / "movies.csv").is_file() and (data_dir.parent / "ratings.csv").is_file():
+        return data_dir.parent
+
     raise DatasetError(
         f"Could not find 'movies.csv' and 'ratings.csv' inside '{data_dir}'. {DOWNLOAD_HINT}"
     )

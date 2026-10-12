@@ -10,11 +10,13 @@ venv/
 .env
 .streamlit/secrets.toml
 
-# Data and trained models (large / reproducible)
+# Data (large / reproducible)
 data/ml-*/
 data/*.zip
-models/*.joblib
-models/metrics.json
+
+# Allow trained model artifacts for deployment
+!models/artifacts.joblib
+!models/metrics.json
 
 # Editors / OS
 .vscode/

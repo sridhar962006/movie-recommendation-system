@@ -1,0 +1,195 @@
+{
+  "rating_prediction": [
+    {
+      "algorithm": "Global Mean (baseline)",
+      "rmse": 1.0457471211825342,
+      "mae": 0.8284434543741985,
+      "n_test": 19940
+    },
+    {
+      "algorithm": "Item Mean (baseline)",
+      "rmse": 0.9788059638776535,
+      "mae": 0.757097103444378,
+      "n_test": 19940
+    },
+    {
+      "algorithm": "Collaborative Filtering",
+      "rmse": 0.8881224437631452,
+      "mae": 0.677998086154069,
+      "n_test": 19940
+    },
+    {
+      "algorithm": "SVD",
+      "rmse": 0.8784671084961558,
+      "mae": 0.6725338180898224,
+      "n_test": 19940
+    }
+  ],
+  "ranking": [
+    {
+      "algorithm": "Random (baseline)",
+      "precision": 0.0006666666666666668,
+      "recall": 0.0001442577030812325,
+      "f1": 0.00023361823361823362,
+      "hit_rate": 0.006666666666666667,
+      "coverage": 0.2610346951344693,
+      "k": 10,
+      "n_users": 300
+    },
+    {
+      "algorithm": "Popularity-Based",
+      "precision": 0.077,
+      "recall": 0.05841268926187304,
+      "f1": 0.04935410065809028,
+      "hit_rate": 0.4033333333333333,
+      "coverage": 0.0043112297269554505,
+      "k": 10,
+      "n_users": 300
+    },
+    {
+      "algorithm": "Content-Based",
+      "precision": 0.016999999999999998,
+      "recall": 0.01724352399337033,
+      "f1": 0.013128749268203347,
+      "hit_rate": 0.15333333333333332,
+      "coverage": 0.07903921166084993,
+      "k": 10,
+      "n_users": 300
+    },
+    {
+      "algorithm": "Collaborative Filtering",
+      "precision": 0.10366666666666666,
+      "recall": 0.08034541890894267,
+      "f1": 0.06996607716220556,
+      "hit_rate": 0.5266666666666666,
+      "coverage": 0.05686717306507904,
+      "k": 10,
+      "n_users": 300
+    },
+    {
+      "algorithm": "SVD",
+      "precision": 0.05566666666666668,
+      "recall": 0.04390688392367366,
+      "f1": 0.035682701246669266,
+      "hit_rate": 0.32,
+      "coverage": 0.019605830424964072,
+      "k": 10,
+      "n_users": 300
+    },
+    {
+      "algorithm": "Hybrid Recommendation",
+      "precision": 0.030333333333333337,
+      "recall": 0.02075472392491691,
+      "f1": 0.018837901988421533,
+      "hit_rate": 0.23,
+      "coverage": 0.03818517758160542,
+      "k": 10,
+      "n_users": 300
+    }
+  ],
+  "ranking_setup": {
+    "k": 10,
+    "relevance_threshold": 4.0,
+    "users_evaluated": 300,
+    "max_users": 300,
+    "note": "Content-Based and Hybrid do not output calibrated star ratings, so they have no RMSE/MAE. Candidates for ranking are all movies not rated by the user in the training split."
+  },
+  "meta": {
+    "n_movies": 9742,
+    "n_users": 610,
+    "n_ratings": 100836,
+    "n_train": 80896,
+    "n_test": 19940,
+    "test_fraction": 0.2,
+    "seed": 42,
+    "trained_at": "2026-10-12T05:56:27+00:00",
+    "svd": {
+      "n_factors": 50,
+      "n_epochs": 20,
+      "lr": 0.005,
+      "reg": 0.02
+    }
+  },
+  "svd_training_history": [
+    {
+      "epoch": 1,
+      "train_rmse": 0.9207850530498144
+    },
+    {
+      "epoch": 2,
+      "train_rmse": 0.8912284398244011
+    },
+    {
+      "epoch": 3,
+      "train_rmse": 0.8734709589161631
+    },
+    {
+      "epoch": 4,
+      "train_rmse": 0.8605841435077496
+    },
+    {
+      "epoch": 5,
+      "train_rmse": 0.8499862795880876
+    },
+    {
+      "epoch": 6,
+      "train_rmse": 0.840626494628712
+    },
+    {
+      "epoch": 7,
+      "train_rmse": 0.8322154775974908
+    },
+    {
+      "epoch": 8,
+      "train_rmse": 0.8242525942191341
+    },
+    {
+      "epoch": 9,
+      "train_rmse": 0.8167922230868481
+    },
+    {
+      "epoch": 10,
+      "train_rmse": 0.808877658472835
+    },
+    {
+      "epoch": 11,
+      "train_rmse": 0.8010301701336434
+    },
+    {
+      "epoch": 12,
+      "train_rmse": 0.7930249114950118
+    },
+    {
+      "epoch": 13,
+      "train_rmse": 0.7845822523571363
+    },
+    {
+      "epoch": 14,
+      "train_rmse": 0.7759960820434354
+    },
+    {
+      "epoch": 15,
+      "train_rmse": 0.7668121528650234
+    },
+    {
+      "epoch": 16,
+      "train_rmse": 0.7572682113700043
+    },
+    {
+      "epoch": 17,
+      "train_rmse": 0.7472722846826184
+    },
+    {
+      "epoch": 18,
+      "train_rmse": 0.7365690961853558
+    },
+    {
+      "epoch": 19,
+      "train_rmse": 0.725542902838332
+    },
+    {
+      "epoch": 20,
+      "train_rmse": 0.7141252348275438
+    }
+  ]
+}
