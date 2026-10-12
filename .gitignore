@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Secrets
+.env
+.streamlit/secrets.toml
+
+# Data and trained models (large / reproducible)
+data/ml-*/
+data/*.zip
+models/*.joblib
+models/metrics.json
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

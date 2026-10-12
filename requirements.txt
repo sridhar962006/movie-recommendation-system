@@ -1,0 +1,19 @@
+# Core runtime dependencies (every package below is imported by the project).
+# Ranges are tested-compatible lower bounds with an upper cap on the next major version.
+streamlit>=1.37,<2.0
+pandas>=2.0,<4.0
+numpy>=1.24,<3.0
+scipy>=1.10,<2.0
+scikit-learn>=1.3,<2.0
+plotly>=5.18,<7.0
+matplotlib>=3.7,<4.0
+joblib>=1.3,<2.0
+requests>=2.31,<3.0
+
+# Testing (optional - only needed to run `pytest`; `python -m unittest discover -s tests -t .` works without it)
+pytest>=7.4,<10.0
+
+# Fallback strategy
+# * SVD is implemented in NumPy (src/svd_model.py), so scikit-surprise - which needs a C compiler
+#   and often fails to install on Windows / new Python versions - is NOT required.
+# * TMDb posters are optional: without TMDB_API_KEY the app shows a local placeholder.

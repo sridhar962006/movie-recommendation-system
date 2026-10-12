@@ -1,0 +1,15 @@
+[theme]
+base = "dark"
+primaryColor = "#e50914"
+backgroundColor = "#0b0b14"
+secondaryBackgroundColor = "#16162a"
+textColor = "#f3f4f6"
+font = "sans serif"
+
+[client]
+# Never show Python stack traces to end users (details go to the terminal log).
+showErrorDetails = "none"
+toolbarMode = "minimal"
+
+[server]
+headless = true
